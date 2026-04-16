@@ -5,6 +5,6 @@ witness_hash=$(echo -n "$REDEEM_SCRIPT" | xxd -r -p | openssl dgst -sha256 | sed
 redeem_wrapped="0020${witness_hash}"
 hash=$(echo -n "$redeem_wrapped" | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -rmd160 | sed 's/^.* //')
 spk="a914${hash}87"
-SCRIPT=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.address')
+SCRIPT=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.p2sh')
 
 echo "$SCRIPT"
