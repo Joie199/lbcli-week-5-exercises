@@ -3,5 +3,5 @@ transaction="020000000121654fa95d5a268abf96427e3292baed6c9f6d16ed9e80511070f9548
 program=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r '.vin[0].scriptSig.asm' | awk '{print $NF}')
 hash=$(echo -n "$program" | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -rmd160 | awk '{print $2}')
 spk="a914${hash}87"
-script=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.address')
+script=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.p2sh')
 echo "$script"
