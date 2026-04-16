@@ -7,4 +7,5 @@ hash=$(echo -n "$publicKey" | xxd -r -p | openssl dgst -sha256 -binary | openssl
 hext=$(printf '%08x\n' $timestamp | sed 's/^\(00\)*//')
 time=$(echo $hext | tac -rs .. | tr -d '\n')
 spk="04${time}b17576a914${hash}88ac"
+
 echo "$spk"
