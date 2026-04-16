@@ -3,5 +3,5 @@ transaction="020000000121654fa95d5a268abf96427e3292baed6c9f6d16ed9e80511070f9548
 REDEEM_SCRIPT=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r '.vin[0].scriptSig.asm')
 hash=$(echo -n "$REDEEM_SCRIPT" | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -rmd160 | awk '{print $2}')
 spk="a914${hash}87"
-SCRIPT=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.p2sh')
+SCRIPT=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.address')
 echo "$SCRIPT"
