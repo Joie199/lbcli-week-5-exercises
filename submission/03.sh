@@ -9,4 +9,4 @@ hash160=$(echo -n "$redeem" | xxd -r -p | openssl dgst -sha256 -binary | openssl
 spk="a914${hash160}87"
 
 SCRIPT=$(bitcoin-cli -regtest decodescript "$spk" | jq -r '.p2sh')
-echo "-n $SCRIPT"
+echo -n "$SCRIPT"
