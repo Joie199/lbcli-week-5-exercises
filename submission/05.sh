@@ -1,8 +1,8 @@
 # Create a CSV script that would lock funds until one hundred and fifty blocks had passed
 publicKey=02e3af28965693b9ce1228f9d468149b831d6a0540b25e8a9900f71372c11fb277
-relativeBlocks=150
+blocks=150
 
-relativeHex=$(printf "%x" "$relativeBlocks")
+relativeHex=$(printf "029600")
 
 pubKeyHash=$(echo -n "$publicKey" | xxd -r -p | sha256sum | awk '{print $1}' | xxd -r -p | openssl dgst -rmd160 -binary | xxd -p -c 100)
 
