@@ -6,4 +6,4 @@ pubKeyHash=$(echo -n "$publicKey" | xxd -r -p | openssl dgst -sha256 -binary | o
 
 redeemScript="04${locktimeHex}b17576a914${pubKeyHash}88ac"
 
-echo "$redeemScript"
+echo "$redeemScript"  

@@ -5,4 +5,4 @@ redeemScript=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r 
 
 address=$(bitcoin-cli -regtest decodescript "$redeemScript" | jq -r '.segwit."p2sh-segwit"')
 
-echo "$address"
+echo "$address" 

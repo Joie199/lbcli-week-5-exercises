@@ -7,4 +7,4 @@ pubKeyHash=$(echo -n "$publicKey" | xxd -r -p | sha256sum | awk '{print $1}' | x
 
 redeemscript="029600b27576a914${pubKeyHash}88ac"
 
-echo "$redeemscript"
+echo "$redeemscript" 
